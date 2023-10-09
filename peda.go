@@ -2,15 +2,11 @@ package peda
 
 import (
 	"encoding/json"
-	"net/http"
 )
 
-func GCFPeda(w http.ResponseWriter, r *http.Request) {
-	mconn := SetConnection("MONGOULBI", "petapedia")
-	datagedung := GetAllBangunanLineString(mconn, "petapedia")
-
-	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(datagedung)
-
-	//fmt.Fprintf(w, datagedung)
+func GCFHandler(MONGOCONNSTRINGENV, dbname, collectionname string) string {
+	mconn := SetConnection(MONGOCONNSTRINGENV, dbname)
+	datagedung := GetAllBangunanLineString(mconn, collectionname)
+	jsondatagedung, _ := json.Marshal(datagedung)
+	return string(jsondatagedung)
 }
