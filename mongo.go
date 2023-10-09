@@ -15,7 +15,7 @@ func SetConnection(MONGOCONNSTRINGENV, dbname string) *mongo.Database {
 	return atdb.MongoConnect(DBmongoinfo)
 }
 
-func GetAllBangunanLineString(mongoconn *mongo.Database, collection string) []GeoJsonLineString {
-	lokasi := atdb.GetAllDoc[[]GeoJsonLineString](mongoconn, collection)
+func GetAllBangunanLineString(mongoconn *mongo.Database, collection string) []GeoJson {
+	lokasi := atdb.GetAllDoc[[]GeoJson](mongoconn, collection)
 	return lokasi
 }
