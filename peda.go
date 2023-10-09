@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 )
 
-func StringGetAllBangunan(MONGOCONNSTRINGENV, dbname, collectionname string) string {
+func GCFHandler(MONGOCONNSTRINGENV, dbname, collectionname string) string {
 	mconn := SetConnection(MONGOCONNSTRINGENV, dbname)
 	datagedung := GetAllBangunanLineString(mconn, collectionname)
 	jsondatagedung, _ := json.Marshal(datagedung)
