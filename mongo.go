@@ -4,6 +4,7 @@ import (
 	"os"
 
 	"github.com/aiteung/atdb"
+	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
@@ -18,4 +19,11 @@ func SetConnection(MONGOCONNSTRINGENV, dbname string) *mongo.Database {
 func GetAllBangunanLineString(mongoconn *mongo.Database, collection string) []GeoJson {
 	lokasi := atdb.GetAllDoc[[]GeoJson](mongoconn, collection)
 	return lokasi
+}
+
+func IsPasswordValid(mongoconn *mongo.Database, collection string, userdata User) bool {
+	filter := bson.M{"username": userdata.Username}
+	res := atdb.GetOneDoc[User](mongoconn, collection, filter)
+	hash, _ := HashPassword(userdata.Password)
+	return CheckPasswordHash(hash, res.Password)
 }
