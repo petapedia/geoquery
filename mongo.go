@@ -24,6 +24,5 @@ func GetAllBangunanLineString(mongoconn *mongo.Database, collection string) []Ge
 func IsPasswordValid(mongoconn *mongo.Database, collection string, userdata User) bool {
 	filter := bson.M{"username": userdata.Username}
 	res := atdb.GetOneDoc[User](mongoconn, collection, filter)
-	hash, _ := HashPassword(userdata.Password)
-	return CheckPasswordHash(hash, res.Password)
+	return CheckPasswordHash(userdata.Password, res.Password)
 }
