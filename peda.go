@@ -30,8 +30,8 @@ func GCFPostHandler(PASETOPRIVATEKEYENV, MONGOCONNSTRINGENV, dbname, collectionn
 				Response.Message = "Gagal Encode Token : " + err.Error() + " " + datauser.Username
 			} else {
 				Response.Message = "Selamat Datang"
+				Response.Token = tokenstring
 			}
-			Response.Token = tokenstring
 		} else {
 			Response.Message = "Password Salah"
 		}
