@@ -31,6 +31,8 @@ func GCFPostHandler(PASETOPRIVATEKEY, MONGOCONNSTRINGENV, dbname, collectionname
 				Response.Message = "Selamat Datang"
 			}
 			Response.Token = tokenstring
+		} else {
+			Response.Message = "Password Salah"
 		}
 	}
 

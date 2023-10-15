@@ -17,4 +17,5 @@ func TestGeneratePrivateKeyPaseto(t *testing.T) {
 	privateKey, publicKey := watoken.GenerateKey()
 	fmt.Println(privateKey)
 	fmt.Println(publicKey)
+	GCFPostHandler("PRIVATEKEY", "MONGOULBI", "petapedia", "user")
 }
