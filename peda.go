@@ -27,7 +27,7 @@ func GCFPostHandler(PASETOPRIVATEKEYENV, MONGOCONNSTRINGENV, dbname, collectionn
 			Response.Status = true
 			tokenstring, err := watoken.Encode(datauser.Username, os.Getenv(PASETOPRIVATEKEYENV))
 			if err != nil {
-				Response.Message = "Gagal Encode Token : " + err.Error() + " " + datauser.Username
+				Response.Message = "Gagal Encode Token : " + err.Error()
 			} else {
 				Response.Message = "Selamat Datang"
 				Response.Token = tokenstring
