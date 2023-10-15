@@ -3,6 +3,7 @@ package peda
 import (
 	"encoding/json"
 	"net/http"
+	"os"
 
 	"github.com/whatsauth/watoken"
 )
@@ -13,7 +14,7 @@ func GCFHandler(MONGOCONNSTRINGENV, dbname, collectionname string) string {
 	return GCFReturnStruct(datagedung)
 }
 
-func GCFPostHandler(PASETOPRIVATEKEY, MONGOCONNSTRINGENV, dbname, collectionname string, r *http.Request) string {
+func GCFPostHandler(PASETOPRIVATEKEYENV, MONGOCONNSTRINGENV, dbname, collectionname string, r *http.Request) string {
 	var Response Credential
 	Response.Status = false
 	mconn := SetConnection(MONGOCONNSTRINGENV, dbname)
@@ -24,9 +25,9 @@ func GCFPostHandler(PASETOPRIVATEKEY, MONGOCONNSTRINGENV, dbname, collectionname
 	} else {
 		if IsPasswordValid(mconn, collectionname, datauser) {
 			Response.Status = true
-			tokenstring, err := watoken.Encode(datauser.Username, PASETOPRIVATEKEY)
+			tokenstring, err := watoken.Encode(datauser.Username, os.Getenv(PASETOPRIVATEKEYENV))
 			if err != nil {
-				Response.Message = "Gagal Encode Token : " + err.Error() + " " + datauser.Username + " " + PASETOPRIVATEKEY
+				Response.Message = "Gagal Encode Token : " + err.Error() + " " + datauser.Username
 			} else {
 				Response.Message = "Selamat Datang"
 			}
