@@ -34,7 +34,6 @@ db.lokasi.find(
 )
 ```
 
-
 Implementasi Golang :
 
 ```go
