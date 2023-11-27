@@ -118,9 +118,64 @@ filter := bson.M{
   "batas": bson.M{
    "$geoWithin": bson.M{
     "$geometry": bson.M{
-     "type":        "Point",
+     "type":        "Polygon",
      "coordinates": [][]float64{long, lat},
     },
+   },
+  },
+ }
+```
+
+## Near
+
+Pada dokumen mongo :
+
+```json
+{
+   <location field>: {
+     $near: {
+       $geometry: {
+          type: "Point" ,
+          coordinates: [ <longitude> , <latitude> ]
+       },
+       $maxDistance: <distance in meters>,
+       $minDistance: <distance in meters>
+     }
+   }
+}
+```
+
+Query mongosh :
+
+```sh
+db.lokasi.find(
+   {
+     batas: {
+       $near: {
+          $geometry: {
+             type: "Point" ,
+             coordinates: [ 107.57569081895566, -6.8735086203166285 ]
+          },
+          $maxDistance: 25,
+          $minDistance: 0
+       }
+     }
+   }
+)
+```
+
+Implementasi Golang :
+
+```go
+filter := bson.M{
+  "batas": bson.M{
+   "$near": bson.M{
+    "$geometry": bson.M{
+     "type":        "Point",
+     "coordinates": []float64{long, lat},
+    },
+    "$maxDistance": 25,
+    "$minDistance": 0,
    },
   },
  }
