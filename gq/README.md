@@ -79,8 +79,31 @@ db.lokasi.find(
      batas: {
        $geoWithin: {
           $geometry: {
-             type: "Point" ,
-             coordinates: [ 107.57569081895566, -6.8735086203166285 ]
+             type: "Polygon" ,
+             coordinates: [
+          [
+            [
+              107.57563124089006,
+              -6.87337660729348
+            ],
+            [
+              107.57563124089006,
+              -6.8735235494584686
+            ],
+            [
+              107.5757273342715,
+              -6.8735235494584686
+            ],
+            [
+              107.5757273342715,
+              -6.87337660729348
+            ],
+            [
+              107.57563124089006,
+              -6.87337660729348
+            ]
+          ]
+        ]
           }
        }
      }
@@ -96,7 +119,7 @@ filter := bson.M{
    "$geoWithin": bson.M{
     "$geometry": bson.M{
      "type":        "Point",
-     "coordinates": []float64{long, lat},
+     "coordinates": [][]float64{long, lat},
     },
    },
   },
