@@ -2,6 +2,10 @@
 
 Peta Pedia Library Package
 
+## ENV Setting
+![image](https://github.com/petapedia/geoquery/assets/11188109/1009c159-7cb2-4d0f-bf78-5ad590a307ad)
+
+## Release
 ```sh
 go get -u all
 go mod tidy
