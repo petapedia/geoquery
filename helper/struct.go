@@ -1,8 +1,12 @@
 package helper
 
-import "encoding/json"
+import (
+	"encoding/json"
+	"fmt"
+	"net/http"
+)
 
-func Json(DataStuct any) string {
+func Json(w http.ResponseWriter, DataStuct any) {
 	jsondata, _ := json.Marshal(DataStuct)
-	return string(jsondata)
+	fmt.Fprintf(w, string(jsondata))
 }

@@ -2,7 +2,6 @@ package geoquery
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
 
 	"github.com/aiteung/atmessage"
@@ -21,5 +20,5 @@ func PostGeoIntersects(w http.ResponseWriter, r *http.Request) {
 	} else {
 		resp.Response = "Secret Salah"
 	}
-	fmt.Fprintf(w, helper.Json(resp))
+	helper.Json(w, resp)
 }
