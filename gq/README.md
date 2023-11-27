@@ -235,3 +235,38 @@ filter := bson.M{
   },
  }
 ```
+
+## Box
+
+Mencari lokasi di dalam kotak.
+Pada dokumen mongo :
+
+```json
+{
+  <location field>: {
+     $geoWithin: {
+        $box: [
+          [ <bottom left coordinates> ],
+          [ <upper right coordinates> ]
+        ]
+     }
+  }
+}
+```
+
+Query mongosh :
+
+```sh
+db.lokasi.find(
+   {
+     batas: {
+       $geoWithin: {
+          $box: [
+                [ 107.56777632469857, -6.876878154969793 ],
+                [ 107.58746411897147, -6.866868253263269 ]
+             ]
+       }
+     }
+   }
+)
+```
