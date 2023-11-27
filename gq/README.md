@@ -17,6 +17,24 @@ Pada dokumen mongo :
 }
 ```
 
+Query mongosh :
+
+```sh
+db.lokasi.find(
+   {
+     batas: {
+       $geoIntersects: {
+          $geometry: {
+             type: "Point" ,
+             coordinates: [ 107.57569081895566, -6.8735086203166285 ]
+          }
+       }
+     }
+   }
+)
+```
+
+
 Implementasi Golang :
 
 ```go
