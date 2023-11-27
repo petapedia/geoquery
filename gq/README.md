@@ -4,6 +4,8 @@
 
 ## GeoIntersects
 
+![image](https://github.com/petapedia/geoquery/assets/11188109/55d0346d-f731-4116-a594-8d7bbfa553c3)
+
 Pada dokumen mongo :
 
 ```json
