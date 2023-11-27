@@ -270,3 +270,63 @@ db.lokasi.find(
    }
 )
 ```
+
+## Center
+
+Mengembalikan lokasi kordinat di dalam lingkaran.
+Pada dokumen mongo :
+
+```json
+{
+   <location field>: {
+      $geoWithin: { $center: [ [ <x>, <y> ] , <radius> ] }
+   }
+}
+```
+
+Query mongosh :
+
+```sh
+db.lokasi.find(
+   {
+     batas: {
+       $geoWithin: {
+          $center: [
+                [ 107.56777632469857, -6.876878154969793 ],
+                10
+             ]
+       }
+     }
+   }
+)
+```
+
+## CenterSphere
+
+Mengembalikan lokasi kordinat di dalam lingkaran.
+Pada dokumen mongo :
+
+```json
+{
+   <location field>: {
+      $geoWithin: { $centerSphere: [ [ <x>, <y> ] , <radius> ] }
+   }
+}
+```
+
+Query mongosh :
+
+```sh
+db.lokasi.find(
+   {
+     batas: {
+       $geoWithin: {
+          $centerSphere: [
+                [ 107.56777632469857, -6.876878154969793 ],
+                10
+             ]
+       }
+     }
+   }
+)
+```
