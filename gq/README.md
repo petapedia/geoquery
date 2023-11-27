@@ -1,5 +1,7 @@
 # Geospatioal Query Operators
 
+<https://www.mongodb.com/docs/manual/reference/operator/query-geospatial/>
+
 ## GeoIntersects
 
 Pada dokumen mongo :
