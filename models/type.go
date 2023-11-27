@@ -1,4 +1,6 @@
-package peda
+package models
+
+import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type GeometryPolygon struct {
 	Coordinates [][][]float64 `json:"coordinates" bson:"coordinates"`
@@ -51,4 +53,11 @@ type Credential struct {
 	Status  bool   `json:"status" bson:"status"`
 	Token   string `json:"token,omitempty" bson:"token,omitempty"`
 	Message string `json:"message,omitempty" bson:"message,omitempty"`
+}
+
+type Lokasi struct { //lokasi yang bisa melakukan presensi
+	ID       primitive.ObjectID `bson:"_id,omitempty"`
+	Nama     string             `bson:"nama,omitempty"`
+	Batas    Geometry           `bson:"batas,omitempty"`
+	Kategori string             `bson:"kategori,omitempty"`
 }
