@@ -6,8 +6,6 @@
 
 ![image](https://github.com/petapedia/geoquery/assets/11188109/55d0346d-f731-4116-a594-8d7bbfa553c3)
 
-![image](https://github.com/petapedia/geoquery/assets/11188109/55d0346d-f731-4116-a594-8d7bbfa553c3)
-
 Untuk mengetahui apakah sebuah titik lokasi beririsan dengan sebuah poligon yang mana dari database.
 Pada dokumen mongo :
 
