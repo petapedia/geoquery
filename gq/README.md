@@ -128,6 +128,7 @@ filter := bson.M{
 
 ## Near
 
+Mencari lokasi terdekat dari titik kordinat.
 Pada dokumen mongo :
 
 ```json
@@ -152,6 +153,60 @@ db.lokasi.find(
    {
      batas: {
        $near: {
+          $geometry: {
+             type: "Point" ,
+             coordinates: [ 107.57569081895566, -6.8735086203166285 ]
+          },
+          $maxDistance: 25,
+          $minDistance: 0
+       }
+     }
+   }
+)
+```
+
+Implementasi Golang :
+
+```go
+filter := bson.M{
+  "batas": bson.M{
+   "$near": bson.M{
+    "$geometry": bson.M{
+     "type":        "Point",
+     "coordinates": []float64{long, lat},
+    },
+    "$maxDistance": 25,
+    "$minDistance": 0,
+   },
+  },
+ }
+```
+
+## NearSphere
+
+Mencari lokasi terdekat dari titik kordinat.
+Pada dokumen mongo :
+
+```json
+{
+  $nearSphere: {
+     $geometry: {
+        type : "Point",
+        coordinates : [ <longitude>, <latitude> ]
+     },
+     $minDistance: <distance in meters>,
+     $maxDistance: <distance in meters>
+  }
+}
+```
+
+Query mongosh :
+
+```sh
+db.lokasi.find(
+   {
+     batas: {
+       $nearSphere: {
           $geometry: {
              type: "Point" ,
              coordinates: [ 107.57569081895566, -6.8735086203166285 ]
