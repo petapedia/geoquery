@@ -6,5 +6,5 @@ import (
 )
 
 func init() {
-	functions.HTTP("Init", geoquery.Post)
+	functions.HTTP("Init", geoquery.PostGeoIntersects)
 }

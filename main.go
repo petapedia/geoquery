@@ -12,7 +12,7 @@ import (
 	"github.com/petapedia/geoquery/helper"
 )
 
-func Post(w http.ResponseWriter, r *http.Request) {
+func PostGeoIntersects(w http.ResponseWriter, r *http.Request) {
 	var msg model.IteungMessage
 	var resp atmessage.Response
 	json.NewDecoder(r.Body).Decode(&msg)
