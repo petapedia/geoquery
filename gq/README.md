@@ -4,6 +4,7 @@
 
 ## GeoIntersects
 
+Untuk mengetahui apakah sebuah titik lokasi beririsan dengan sebuah poligon yang mana dari database.
 Pada dokumen mongo :
 
 ```json
@@ -42,6 +43,55 @@ Implementasi Golang :
 filter := bson.M{
   "batas": bson.M{
    "$geoIntersects": bson.M{
+    "$geometry": bson.M{
+     "type":        "Point",
+     "coordinates": []float64{long, lat},
+    },
+   },
+  },
+ }
+```
+
+## GeoWithin
+
+Pada dokumen mongo :
+
+```json
+{
+   <location field>: {
+      $geoWithin: {
+         $geometry: {
+            type: <"Polygon" or "MultiPolygon"> ,
+            coordinates: [ <coordinates> ]
+         }
+      }
+   }
+}
+```
+
+Query mongosh :
+
+```sh
+db.lokasi.find(
+   {
+     batas: {
+       $geoWithin: {
+          $geometry: {
+             type: "Point" ,
+             coordinates: [ 107.57569081895566, -6.8735086203166285 ]
+          }
+       }
+     }
+   }
+)
+```
+
+Implementasi Golang :
+
+```go
+filter := bson.M{
+  "batas": bson.M{
+   "$geoWithin": bson.M{
     "$geometry": bson.M{
      "type":        "Point",
      "coordinates": []float64{long, lat},
