@@ -1,5 +1,7 @@
 # GeoQuery
 
+[MongoDB Geospatial Query](https://www.mongodb.com/docs/manual/geospatial-queries/)
+
 ![image](https://github.com/petapedia/geoquery/assets/11188109/bfc085c6-e10f-438f-a528-c8ae7ee7da3b)
 
 contoh query menggunakan geointersect :
